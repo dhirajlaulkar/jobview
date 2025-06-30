@@ -8,17 +8,20 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
-// Configure Inter font with Latin subset for better performance
+
 const inter = Inter({ subsets: ["latin"] })
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 
-// SEO metadata configuration - customize for better search rankings
+
 export const metadata: Metadata = {
   title: "JobView - Find Your Dream Job",
   description: "Your premier destination for job opportunities. Connect with top companies and find your dream career with JobView.",
   keywords: ["jobs", "career", "employment", "job portal", "JobView"],
   authors: [{ name: "JobView Team" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "JobView - India's Leading Job Portal",
     description: "Find your dream job with JobView. Browse thousands of opportunities from top companies.",
