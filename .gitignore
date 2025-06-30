@@ -173,8 +173,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+
 parts/
 sdist/
 var/
@@ -311,14 +310,14 @@ gradle-app.setting
 *.exp
 *.gch
 *.pch
-*.lib
+
 *.a
 *.la
 *.lo
 *.dll
 *.so
 *.so.*
-*.dylib
+
 *.exe
 *.out
 *.app
@@ -382,7 +381,7 @@ Gemfile.lock
 *.exe~
 *.dll
 *.so
-*.dylib
+
 
 # Test binary, built with `go test -c`
 *.test
