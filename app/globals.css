@@ -1,0 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    
+    /* Custom JobView colors */
+    --jobview-primary: 221 83% 53%;
+    --jobview-secondary: 210 40% 96%;
+    --jobview-accent: 262 83% 58%;
+    --jobview-success: 142 76% 36%;
+    --jobview-warning: 38 92% 50%;
+    --jobview-error: 0 84% 60%;
+    --jobview-gradient-start: 221 83% 53%;
+    --jobview-gradient-end: 262 83% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography enhancements */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: hsl(var(--foreground));
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: hsl(var(--foreground));
+  }
+
+  /* Enhanced button styles */
+  button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
+}
+
+@layer components {
+  /* JobView specific components */
+  .jobview-gradient {
+    background: linear-gradient(135deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
+  }
+
+  .jobview-gradient-text {
+    background: linear-gradient(135deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .jobview-card {
+    @apply bg-card border border-border rounded-xl shadow-sm;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+  }
+
+  .jobview-card:hover {
+    @apply shadow-lg;
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+
+  .jobview-button-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold;
+    background: linear-gradient(135deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
+    box-shadow: 0 4px 14px 0 hsl(var(--jobview-gradient-start) / 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .jobview-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px 0 hsl(var(--jobview-gradient-start) / 0.4);
+  }
+
+  .jobview-button-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-semibold border border-border;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .jobview-button-secondary:hover {
+    @apply bg-secondary/80;
+    transform: translateY(-1px);
+  }
+
+  .jobview-input {
+    @apply bg-background border border-border rounded-lg px-4 py-3;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .jobview-input:focus {
+    @apply border-primary ring-2 ring-primary/20;
+    outline: none;
+  }
+
+  .jobview-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    background: linear-gradient(135deg, hsl(var(--jobview-success) / 0.1), hsl(var(--jobview-success) / 0.2));
+    color: hsl(var(--jobview-success));
+    border: 1px solid hsl(var(--jobview-success) / 0.2);
+  }
+
+  .jobview-badge-warning {
+    background: linear-gradient(135deg, hsl(var(--jobview-warning) / 0.1), hsl(var(--jobview-warning) / 0.2));
+    color: hsl(var(--jobview-warning));
+    border: 1px solid hsl(var(--jobview-warning) / 0.2);
+  }
+
+  .jobview-badge-error {
+    background: linear-gradient(135deg, hsl(var(--jobview-error) / 0.1), hsl(var(--jobview-error) / 0.2));
+    color: hsl(var(--jobview-error));
+    border: 1px solid hsl(var(--jobview-error) / 0.2);
+  }
+
+  /* Header styles */
+  .jobview-header {
+    @apply sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-xl;
+    box-shadow: 0 1px 3px 0 hsl(var(--foreground) / 0.1);
+  }
+
+  /* Hero section */
+  .jobview-hero {
+    background: linear-gradient(135deg, 
+      hsl(var(--jobview-gradient-start) / 0.05) 0%, 
+      hsl(var(--jobview-gradient-end) / 0.05) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jobview-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  /* Job card styles */
+  .jobview-job-card {
+    @apply bg-card border border-border rounded-xl p-6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jobview-job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .jobview-job-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .jobview-job-card:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+
+  /* Admin dashboard styles */
+  .jobview-admin-sidebar {
+    @apply bg-card border-r border-border;
+    background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--card) / 0.95));
+  }
+
+  .jobview-admin-content {
+    @apply bg-background;
+    background: linear-gradient(135deg, 
+      hsl(var(--background)) 0%, 
+      hsl(var(--muted) / 0.3) 100%);
+  }
+
+  /* Loading animations */
+  .jobview-loading {
+    background: linear-gradient(90deg, 
+      hsl(var(--muted)) 25%, 
+      hsl(var(--muted) / 0.5) 50%, 
+      hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Pulse animation for notifications */
+  .jobview-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Fade in animation */
+  .jobview-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Slide in animation */
+  .jobview-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .bg-grid-slate-100 {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='m0 .5h32m-32 32v-32'/%3e%3c/svg%3e");
+  }
+
+  .bg-grid-white\/10 {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.1)'%3e%3cpath d='m0 .5h32m-32 32v-32'/%3e%3c/svg%3e");
+  }
+
+  /* Enhanced scrollbar */
+  .jobview-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--muted));
+  }
+
+  .jobview-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .jobview-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  .jobview-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: 3px;
+    transition: background 0.2s;
+  }
+
+  .jobview-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground));
+  }
+
+  /* Glass morphism effect */
+  .jobview-glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Text selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary));
+  }
+
+  /* Focus styles */
+  .jobview-focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px hsl(var(--ring));
+  }
+
+  /* Responsive text */
+  .jobview-text-responsive {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+
+  .jobview-heading-responsive {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+}
+
+/* Print styles */
+@media print {
+  .jobview-no-print {
+    display: none !important;
+  }
+  
+  .jobview-job-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
