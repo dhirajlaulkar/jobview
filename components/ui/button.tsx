@@ -18,12 +18,18 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        "pill-transparent": "text-black/75 rounded-3xl border border-transparent shadow-custom-light bg-transparent hover:bg-black/5 px-4 py-[7px]",
+        "pill-black": "bg-black/75 text-white rounded-3xl border border-transparent shadow-none hover:bg-black/90 px-3 py-2",
+        "rect-white": "bg-white text-black/75 rounded-lg border border-black/10 shadow-none hover:bg-gray-50 pl-4 pr-3 py-4",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        // Add a "custom" size that effectively does nothing if the variant handles it, 
+        // OR just rely on standard sizes and override in variant (which CSS specificity might allow, or tailwind merge might handle).
+        // For now, the variant classes above have padding. 
       },
     },
     defaultVariants: {
@@ -35,7 +41,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
 
