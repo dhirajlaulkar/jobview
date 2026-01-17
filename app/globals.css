@@ -5,35 +5,75 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 0%;
+
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 0%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 210 90% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 0%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 33 50% 96%;
+    /* #fdf6ec based on user's color-data-sequential-d-1 */
+    --muted-foreground: 0 0% 40%;
+    /* #666666 */
+
     --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent-foreground: 0 0% 0%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
-    
-    /* Custom JobView colors */
-    --jobview-primary: 221 83% 53%;
-    --jobview-secondary: 210 40% 96%;
-    --jobview-accent: 262 83% 58%;
-    --jobview-success: 142 76% 36%;
-    --jobview-warning: 38 92% 50%;
-    --jobview-error: 0 84% 60%;
-    --jobview-gradient-start: 221 83% 53%;
-    --jobview-gradient-end: 262 83% 58%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 210 90% 40%;
+    /* Same as primary #0a66c2 */
+
+    --radius: 0.5rem;
+    /* 8px */
+
+    /* Custom Color Palette from User */
+    --color-data-sequential-d-1: 33 50% 96%;
+    /* #fdf6ec */
+    --color-data-divergent-scale-b-6: 267 69% 68%;
+    /* #a872e8 */
+    --color-container-accent-2-active: 13 60% 28%;
+    /* #762812 */
+    --color-icon-negative-active: 358 100% 27%;
+    /* #8a0005 */
+    --color-input-android-indicator-checked-disabled: 0 0% 69%;
+    /* #b0b0b0 */
+    --color-label-current-active: 0 0% 100%;
+    /* #ffffff */
+    --color-surface-accent-3: 99 35% 87%;
+    /* #daebd1 */
+    --color-data-sequential-a-3: 210 36% 91%;
+    /* #dde7f1 */
+    --color-container-accent-border-4-hover: 211 17% 26%;
+    /* #38434f */
+    --color-data-icon-positive: 153 92% 24%;
+    /* #057642 */
+    --color-icon-accent-7-hover: 303 60% 27%;
+    /* #711c6d */
+    --color-data-divergent-scale-b-4: 267 91% 89%;
+    /* #dec5fd */
+    --color-data-sequential-b-1: 270 100% 99%;
+    /* #faf5ff */
+    --color-text-help: 260 48% 60%;
+    /* #8344cc */
+
+    /* Chart Colors - keeping existing mappings or updating if needed */
+    --chart-1: 210 90% 40%;
+    --chart-2: 0 0% 0%;
+    --chart-3: 33 50% 96%;
+    --chart-4: 267 69% 68%;
+    --chart-5: 0 0% 40%;
   }
 }
 
@@ -41,22 +81,27 @@
   * {
     @apply border-border;
   }
-  
+
   html {
     scroll-behavior: smooth;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Fira Sans', 'Ubuntu', 'Oxygen', 'Oxygen Sans', 'Cantarell', 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', 'Helvetica', 'Arial', sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   /* Typography enhancements */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.025em;
@@ -95,6 +140,7 @@
 }
 
 @layer components {
+
   /* JobView specific components */
   .jobview-gradient {
     background: linear-gradient(135deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
@@ -178,9 +224,9 @@
 
   /* Hero section */
   .jobview-hero {
-    background: linear-gradient(135deg, 
-      hsl(var(--jobview-gradient-start) / 0.05) 0%, 
-      hsl(var(--jobview-gradient-end) / 0.05) 100%);
+    background: linear-gradient(135deg,
+        hsl(var(--jobview-gradient-start) / 0.05) 0%,
+        hsl(var(--jobview-gradient-end) / 0.05) 100%);
     position: relative;
     overflow: hidden;
   }
@@ -234,24 +280,29 @@
 
   .jobview-admin-content {
     @apply bg-background;
-    background: linear-gradient(135deg, 
-      hsl(var(--background)) 0%, 
-      hsl(var(--muted) / 0.3) 100%);
+    background: linear-gradient(135deg,
+        hsl(var(--background)) 0%,
+        hsl(var(--muted) / 0.3) 100%);
   }
 
   /* Loading animations */
   .jobview-loading {
-    background: linear-gradient(90deg, 
-      hsl(var(--muted)) 25%, 
-      hsl(var(--muted) / 0.5) 50%, 
-      hsl(var(--muted)) 75%);
+    background: linear-gradient(90deg,
+        hsl(var(--muted)) 25%,
+        hsl(var(--muted) / 0.5) 50%,
+        hsl(var(--muted)) 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
   }
 
   @keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+      background-position: 200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
   }
 
   /* Pulse animation for notifications */
@@ -260,8 +311,15 @@
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
   }
 
   /* Fade in animation */
@@ -270,8 +328,15 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Slide in animation */
@@ -280,8 +345,15 @@
   }
 
   @keyframes slideIn {
-    from { transform: translateX(-20px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 }
 
@@ -369,7 +441,7 @@
   .jobview-no-print {
     display: none !important;
   }
-  
+
   .jobview-job-card {
     break-inside: avoid;
     box-shadow: none;
