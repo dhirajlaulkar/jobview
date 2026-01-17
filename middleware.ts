@@ -1,21 +1,24 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-// This middleware protects routes starting with `/admin` and allows all other routes to be public.
-export default authMiddleware({
-  publicRoutes: [
-    "/",
-    "/jobs",
-    "/jobs/live",
-    "/jobs/(.*)",
-    "/api/jobs",
-    "/api/jobs/live",
-    "/api/jobs/remote",
-    "/api/jobs/(.*)",
-  ],
+const isPublicRoute = createRouteMatcher([
+  "/",
+  "/jobs(.*)",
+  "/api/jobs(.*)",
+  "/sign-in(.*)",
+  "/sign-up(.*)"
+]);
+
+export default clerkMiddleware(async (auth, req) => {
+  if (!isPublicRoute(req)) {
+    await auth.protect();
+  }
 });
 
 export const config = {
-  // The following matcher runs middleware on all routes
-  // except static assets.
-  matcher: [ '/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 };
