@@ -15,7 +15,7 @@ JobView is a streamlined job portal built with a modern tech stack. It aggregate
 - **User Authentication**:
   - Secure sign-up, sign-in, and user management powered by Clerk.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/) 14 (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
@@ -25,7 +25,7 @@ JobView is a streamlined job portal built with a modern tech stack. It aggregate
 - **Authentication**: [Clerk](https://clerk.com/)
 - **External APIs**: Adzuna, Remote OK
 
-## ⚙️ Getting Started
+##  Getting Started
 
 ### 1. Prerequisites
 
@@ -96,7 +96,7 @@ To gain access to the admin dashboard located at `/admin`:
     ```
 5.  Save the changes. You should now have access to the `/admin` route.
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 jobview/
