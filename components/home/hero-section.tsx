@@ -48,7 +48,7 @@ export function HeroSection() {
           </div>
 
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-700 mb-6 leading-tight">
             Find Your Dream Job with{" "}
             <span className="text-primary">
               JobView
