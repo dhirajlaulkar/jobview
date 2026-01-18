@@ -10,7 +10,7 @@ import { useSearchParams } from "next/navigation"
 export default function LiveJobsPage() {
   const searchParams = useSearchParams()
   const urlCategory = searchParams.get("category")
-  
+
   const [category, setCategory] = useState(urlCategory || "programming-development")
   const [searchCategory, setSearchCategory] = useState(urlCategory || "programming-development")
 
@@ -66,10 +66,10 @@ export default function LiveJobsPage() {
 
               <Button
                 onClick={handleSearch}
-                className="w-full md:w-auto h-12 px-8 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+                className="w-full md:w-auto h-12 px-8 bg-primary hover:bg-primary/90"
               >
                 <Search className="h-4 w-4 mr-2" />
-                Search 
+                Search
               </Button>
             </div>
           </div>

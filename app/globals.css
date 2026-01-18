@@ -20,9 +20,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 33 50% 96%;
-    /* #fdf6ec based on user's color-data-sequential-d-1 */
     --muted-foreground: 0 0% 40%;
-    /* #666666 */
 
     --accent: 210 40% 96%;
     --accent-foreground: 0 0% 0%;
@@ -33,47 +31,38 @@
     --border: 0 0% 90%;
     --input: 0 0% 90%;
     --ring: 210 90% 40%;
-    /* Same as primary #0a66c2 */
 
     --radius: 0.5rem;
-    /* 8px */
 
-    /* Custom Color Palette from User */
     --color-data-sequential-d-1: 33 50% 96%;
-    /* #fdf6ec */
     --color-data-divergent-scale-b-6: 267 69% 68%;
-    /* #a872e8 */
     --color-container-accent-2-active: 13 60% 28%;
-    /* #762812 */
     --color-icon-negative-active: 358 100% 27%;
-    /* #8a0005 */
     --color-input-android-indicator-checked-disabled: 0 0% 69%;
-    /* #b0b0b0 */
     --color-label-current-active: 0 0% 100%;
-    /* #ffffff */
     --color-surface-accent-3: 99 35% 87%;
-    /* #daebd1 */
     --color-data-sequential-a-3: 210 36% 91%;
-    /* #dde7f1 */
     --color-container-accent-border-4-hover: 211 17% 26%;
-    /* #38434f */
     --color-data-icon-positive: 153 92% 24%;
-    /* #057642 */
     --color-icon-accent-7-hover: 303 60% 27%;
-    /* #711c6d */
     --color-data-divergent-scale-b-4: 267 91% 89%;
-    /* #dec5fd */
     --color-data-sequential-b-1: 270 100% 99%;
-    /* #faf5ff */
     --color-text-help: 260 48% 60%;
-    /* #8344cc */
 
-    /* Chart Colors - keeping existing mappings or updating if needed */
     --chart-1: 210 90% 40%;
     --chart-2: 0 0% 0%;
     --chart-3: 33 50% 96%;
     --chart-4: 267 69% 68%;
     --chart-5: 0 0% 40%;
+
+    --jobview-primary: 210 90% 40%;
+    --jobview-secondary: 0 0% 96%;
+    --jobview-accent: 267 69% 68%;
+    --jobview-success: 142 76% 36%;
+    --jobview-warning: 38 92% 50%;
+    --jobview-error: 0 84% 60%;
+    --jobview-gradient-start: 210 90% 40%;
+    --jobview-gradient-end: 204 88% 71%;
   }
 }
 
@@ -95,7 +84,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Typography enhancements */
   h1,
   h2,
   h3,
@@ -125,7 +113,6 @@
     color: hsl(var(--foreground));
   }
 
-  /* Enhanced button styles */
   button {
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -141,7 +128,6 @@
 
 @layer components {
 
-  /* JobView specific components */
   .jobview-gradient {
     background: linear-gradient(135deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
   }
@@ -167,8 +153,7 @@
 
   .jobview-button-primary {
     @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold;
-    background: linear-gradient(135deg, hsl(var(--jobview-gradient-start)), hsl(var(--jobview-gradient-end)));
-    box-shadow: 0 4px 14px 0 hsl(var(--jobview-gradient-start) / 0.3);
+    box-shadow: 0 4px 14px 0 hsl(var(--primary) / 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -216,13 +201,11 @@
     border: 1px solid hsl(var(--jobview-error) / 0.2);
   }
 
-  /* Header styles */
   .jobview-header {
     @apply sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-xl;
     box-shadow: 0 1px 3px 0 hsl(var(--foreground) / 0.1);
   }
 
-  /* Hero section */
   .jobview-hero {
     background: linear-gradient(135deg,
         hsl(var(--jobview-gradient-start) / 0.05) 0%,
@@ -242,7 +225,6 @@
     opacity: 0.5;
   }
 
-  /* Job card styles */
   .jobview-job-card {
     @apply bg-card border border-border rounded-xl p-6;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -272,7 +254,6 @@
     border-color: hsl(var(--primary) / 0.3);
   }
 
-  /* Admin dashboard styles */
   .jobview-admin-sidebar {
     @apply bg-card border-r border-border;
     background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--card) / 0.95));
@@ -285,7 +266,6 @@
         hsl(var(--muted) / 0.3) 100%);
   }
 
-  /* Loading animations */
   .jobview-loading {
     background: linear-gradient(90deg,
         hsl(var(--muted)) 25%,
@@ -305,7 +285,6 @@
     }
   }
 
-  /* Pulse animation for notifications */
   .jobview-pulse {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
@@ -322,7 +301,6 @@
     }
   }
 
-  /* Fade in animation */
   .jobview-fade-in {
     animation: fadeIn 0.5s ease-out;
   }
@@ -339,7 +317,6 @@
     }
   }
 
-  /* Slide in animation */
   .jobview-slide-in {
     animation: slideIn 0.3s ease-out;
   }
@@ -380,7 +357,6 @@
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.1)'%3e%3cpath d='m0 .5h32m-32 32v-32'/%3e%3c/svg%3e");
   }
 
-  /* Enhanced scrollbar */
   .jobview-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--muted));
@@ -406,27 +382,23 @@
     background: hsl(var(--foreground));
   }
 
-  /* Glass morphism effect */
   .jobview-glass {
     background: hsl(var(--card) / 0.8);
     backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--border) / 0.5);
   }
 
-  /* Text selection */
   ::selection {
     background: hsl(var(--primary) / 0.2);
     color: hsl(var(--primary));
   }
 
-  /* Focus styles */
   .jobview-focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
     box-shadow: 0 0 0 2px hsl(var(--ring));
   }
 
-  /* Responsive text */
   .jobview-text-responsive {
     font-size: clamp(0.875rem, 2vw, 1rem);
   }
@@ -436,7 +408,6 @@
   }
 }
 
-/* Print styles */
 @media print {
   .jobview-no-print {
     display: none !important;

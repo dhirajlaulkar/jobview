@@ -28,10 +28,10 @@ export function HeroSection() {
     if (location.trim()) {
       searchParams.set('location', location.trim())
     }
-    
+
     const queryString = searchParams.toString()
     const url = queryString ? `/jobs?${queryString}` : '/jobs'
-    
+
     router.push(url)
   }
 
@@ -47,7 +47,7 @@ export function HeroSection() {
             India's Premier Job Portal
           </div>
 
-          
+
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 leading-tight">
             Find Your Dream Job with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -107,7 +107,7 @@ export function HeroSection() {
                 <Button
                   onClick={handleSearch}
                   size="lg"
-                  className="w-full h-14 text-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg"
+                  className="w-full h-14 text-lg bg-primary hover:bg-primary/90 shadow-lg"
                 >
                   <Search className="h-5 w-5 mr-2" />
                   Search
@@ -128,7 +128,7 @@ export function HeroSection() {
               </Button>
             </Link>
             <Link href="/jobs">
-              <Button size="lg" className="px-8 py-3 text-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+              <Button size="lg" className="px-8 py-3 text-lg bg-primary hover:bg-primary/90">
                 <Building className="h-5 w-5 mr-2" />
                 Jobs by JobView
               </Button>
@@ -136,7 +136,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        
+
         <div className="text-center mt-10">
           <p className="text-gray-600 mb-4 text-lg">Popular searches:</p>
           <div className="flex flex-wrap justify-center gap-3">

@@ -54,7 +54,7 @@ export function JobsHeader({ onSearch, loading = false }: JobsHeaderProps) {
             <Button
               type="submit"
               disabled={loading}
-              className="h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 md:col-span-1"
+              className="h-12 bg-primary hover:bg-primary/90 md:col-span-1"
             >
               {loading ? "Searching..." : "Search Jobs"}
             </Button>
