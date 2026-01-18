@@ -50,7 +50,7 @@ export function HeroSection() {
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 leading-tight">
             Find Your Dream Job with{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            <span className="text-primary">
               JobView
             </span>
           </h1>
